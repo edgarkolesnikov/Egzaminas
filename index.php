@@ -1,10 +1,10 @@
 <?php
 include("includes/Header.php");
+
 ?>
 <h1> Kontaktai </h1>
 
 <form action="store.php" method="POST">
-
     <input type="text" name="name" placeholder="Name" id="name">
     <br>
     <input type="text" name="surname" placeholder="Surname">

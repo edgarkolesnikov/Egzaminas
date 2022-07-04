@@ -2,14 +2,13 @@
 include("includes/Header.php");
 
 
-if(isset($_POST['delete']))
-{
+if (isset($_POST['delete'])) {
     $id = $_POST['id'];
 
     $query = "DELETE FROM form WHERE id = :id";
     $delete = $conn->prepare($query);
     $data = [
-        ':id' =>$id
+        ':id' => $id
     ];
 
     $delete->execute($data);

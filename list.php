@@ -8,7 +8,7 @@ $data->setFetchMode(PDO::FETCH_OBJ);
 $result = $data->fetchAll();
 
 ?>
-    <table>
+<table>
     <tr>
         <td>Id</td>
         <td>Name</td>
@@ -19,11 +19,10 @@ $result = $data->fetchAll();
         <td>Message</td>
         <td>Delete</td>
     </tr>
-
-<?php
-if ($result) {
-    foreach ($result as $row) {
-        ?>
+    <?php
+    if ($result) {
+        foreach ($result as $row) {
+            ?>
             <tr>
                 <td><?= $row->id; ?> </td>
                 <td><?= $row->name; ?> </td>
@@ -35,15 +34,24 @@ if ($result) {
                 <td>
                     <form action="delete.php" method="POST">
                         <input type="hidden" name="id" value="<?= $row->id; ?>">
-                    <input type="submit" name="delete">
+                        <input type="submit" name="delete">
+                    </form>
+                </td>
+                <td><form action="update.php" method="POST">
+                        <input type="hidden" name="id" value="<?= $row->id; ?>">
+                        <select name="status">
+                            <option value="0"> Neperskaitytas</option>
+                            <option value="1"> Perskaitytas</option>
+                            <option value="2"> Atsakytas</option>
+
+                        </select>
+                        <input type="submit" name="submit" value="Atnaujinti">
                     </form>
                 </td>
             </tr>
-
-
-        <?php
+            <?php
+        }
     }
-}
-?>
+    ?>
 
-    </table>
+</table>
